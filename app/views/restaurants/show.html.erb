@@ -1,0 +1,26 @@
+<div class="container m3">
+  <div class="ms-2 me-auto">
+    <div class="fw-bold"><%= @restaurant.name %></div>
+      <%= @restaurant.address %>
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= @restaurant.category %></span>
+  <h2>Reviews</h2>
+  <% @restaurant.reviews.each do |review| %>
+    <p>
+      <strong>Review:</strong>
+      <%= review.content %>
+    </p>
+
+    <p>
+      <strong>Rating:</strong>
+      <%= review.rating %>
+    </p>
+  <% end %>
+
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :content %>
+    <%= f.submit %>
+  <% end %>
+  </div>
+</div>
